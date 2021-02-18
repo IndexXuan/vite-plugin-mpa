@@ -45,6 +45,8 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
       shell.mv(resolve(`${dest}/src/pages/*`), resolve(dest))
       // 3. remove empty src dir
       shell.rm('-rf', resolve(`${dest}/src`))
+      // 4. remove index.html copyed from public folder
+      shell.rm('-rf', resolve(`${dest}/index.html`))
     },
   }
 }
