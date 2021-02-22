@@ -3,6 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
+    "noUnusedLocals": true,
     "moduleResolution": "node",
     "declaration": true,
     "emitDeclarationOnly": true,

@@ -1,5 +1,4 @@
 import fg from 'fast-glob'
-import fs from 'fs'
 import yargs from 'yargs'
 import path from 'path'
 import { name } from '../../package.json'
