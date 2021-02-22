@@ -14,10 +14,10 @@ export interface MpaOptions {
    */
   nested: boolean
   /**
-   * log the result
-   * @default false
+   * html template filename
+   * @default 'index.html'
    */
-  log: boolean
+  filename: string
 }
 
 export type UserOptions = Partial<MpaOptions>

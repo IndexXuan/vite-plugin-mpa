@@ -1,4 +1,5 @@
 import fg from 'fast-glob'
+import fs from 'fs'
 import yargs from 'yargs'
 import path from 'path'
 import { name } from '../../package.json'
@@ -103,11 +104,11 @@ function getPagesInfo({
   return pages
 }
 
-export function getMPAIO(root: string) {
+export function getMPAIO(root: string, filename: string) {
   const pages = getPagesInfo()
   const input: Record<string, string> = {}
   Object.keys(pages).map(key => {
-    input[key] = path.resolve(root, pages[key].entry.replace(/main.(js|ts)/, 'main.html'))
+    input[key] = path.resolve(root, pages[key].entry.replace(/main.(js|ts)/, filename))
   })
   return input
 }
@@ -115,17 +116,26 @@ export function getMPAIO(root: string) {
 /**
  * history rewrite list
  */
-export function getHistoryReWriteRuleList(): Rewrite[] {
+export function getHistoryReWriteRuleList(filename: string): Rewrite[] {
   const list: Rewrite[] = []
+  list.push({
+    from: /^\/$/,
+    to: `./src/pages/index/${filename}`,
+  })
   const pages = getPagesInfo()
   Object.keys(pages).map(pageName => {
+    const to = `./${pages[pageName].entry.replace(/main.(js|ts)/, filename)}`
     list.push({
-      from: new RegExp(`\/${pageName}.html`),
-      to: `./${pages[pageName].entry.replace(/main.(js|ts)/, 'main.html')}`,
+      from: new RegExp(`^/${pageName}/index.html$`), // support pageName/index.html
+      to,
     })
     list.push({
-      from: new RegExp(`\/${pageName}`),
-      to: `./${pages[pageName].entry.replace(/main.(js|ts)/, 'main.html')}`,
+      from: new RegExp(`^\/${pageName}.html$`), // support pageName.html, not recommended
+      to,
+    })
+    list.push({
+      from: new RegExp(`^\/${pageName}$`), // support pageName, not recommended
+      to,
     })
   })
   return list

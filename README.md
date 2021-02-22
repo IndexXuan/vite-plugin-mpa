@@ -4,7 +4,7 @@
 
 ## Motivation
 - vite native support multi-page, but you must configure `rollupOptions.input`
-- when vite dev, you must open `localhost:3000/src/pages/index/main.html` for `$projectRoot/src/pages/index/main.html`
+- when vite dev, you must open `localhost:3000/src/pages/index/xxx.html` for `$projectRoot/src/pages/index/xxx.html`
 - vue-cli help rewrite url for MPA, this plugin do the same thing and auto open first page for you
 - experiment: when build, organize the folder for you(like vue-cli), `dist/src/pages/subpage/index.html` will move to `dist/subpage/index.html`
 
@@ -30,7 +30,7 @@ export default defineConfig({
 see - src/lib/options
 
 ## TODO
-- use shelljs after-build to organize dist folder, maybe have better approach
+- use shelljs after-build to organize dist folder, maybe have better approach (help wanted)
 
 ## Underlying
 - fast-glob for src/pages/*/main.{js,ts}, calc MPA entries
