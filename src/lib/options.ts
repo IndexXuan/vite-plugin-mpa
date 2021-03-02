@@ -5,7 +5,8 @@
 export interface MpaOptions {
   /**
    * open path for viteDevServer
-   * @default '/index'
+   * this plugin will try to open first page for you, but you can still custom, e.g. /index#/about
+   * @default firstPagePath
    */
   open: string
   /**

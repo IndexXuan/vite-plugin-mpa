@@ -3,12 +3,12 @@ import type { UserOptions } from './lib/options'
 import history from 'connect-history-api-fallback'
 import path from 'path'
 import shell from 'shelljs'
-import { getMPAIO, getHistoryReWriteRuleList } from './lib/utils'
+import { getMPAIO, getHistoryReWriteRuleList, getFirstPage } from './lib/utils'
 import { name } from '../package.json'
 
 export default function mpa(userOptions: UserOptions = {}): Plugin {
   const options = {
-    open: '/index',
+    open: '',
     scanDir: 'src/pages',
     scanFile: 'main.{js,ts,jsx,tsx}',
     defaultEntries: '',
@@ -22,12 +22,11 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
     enforce: 'pre',
     config(config) {
       resolvedConfig = config
-      config.server = config.server || {}
-      config.server.open = options.open
       config.build = config.build || {}
       config.build.rollupOptions = config.build.rollupOptions || {}
       config.build.rollupOptions.input = getMPAIO(config.root || process.cwd(), options)
-      console.log(config.build.rollupOptions.input, 'fuck')
+      config.server = config.server || {}
+      config.server.open = options.open || getFirstPage(config.build.rollupOptions.input)
     },
     configureServer({ middlewares: app }) {
       app.use(

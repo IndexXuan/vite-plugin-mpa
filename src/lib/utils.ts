@@ -15,6 +15,16 @@ export type PageInfo = Record<
 >
 
 /**
+ * return first page path
+ */
+export function getFirstPage(pages: Record<string, string>): string {
+  const firstPageName = Object.keys(pages)[0]
+  const fullPath = pages[firstPageName]
+  const parts = fullPath.split('/')
+  return `/${parts[parts.length - 1]}`
+}
+
+/**
  * @private
  */
 function genFileName(pageName: string, path: string, usePath: boolean, ext: string): string {
