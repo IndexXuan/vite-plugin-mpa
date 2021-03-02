@@ -10,7 +10,7 @@
 
 ## Usage
 ```sh
-yarn add @nibfe/vite-plugin-mpa
+yarn add vite-plugin-mpa
 ```
 
 ```ts
@@ -27,7 +27,7 @@ export default defineConfig({
 ```
 
 ## Options
-see - src/lib/options
+- [@see](https://github.com/IndexXuan/vite-plugin-mpa/blob/main/src/lib/options.ts)
 
 ## TODO
 - use shelljs after-build to organize dist folder, maybe have better approach (help wanted)
