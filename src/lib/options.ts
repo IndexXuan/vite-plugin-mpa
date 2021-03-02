@@ -9,15 +9,30 @@ export interface MpaOptions {
    */
   open: string
   /**
-   * nested glob, not recommended
-   * @default false
+   * where to scan
+   * @default 'src/pages'
    */
-  nested: boolean
+  scanDir: string
+  /**
+   * scanFile
+   * @default 'main.{js,ts,jsx,tsx}'
+   */
+  scanFile: string
+  /**
+   * default included entry
+   * @default ''
+   */
+  defaultEntries: string
   /**
    * html template filename
    * @default 'index.html'
    */
   filename: string
+  /**
+   * nested glob, not recommended
+   * @default false
+   */
+  nested: boolean
 }
 
 export type UserOptions = Partial<MpaOptions>

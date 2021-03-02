@@ -8,7 +8,12 @@ import { name } from '../package.json'
 
 export default function mpa(userOptions: UserOptions = {}): Plugin {
   const options = {
+    open: '/index',
+    scanDir: 'src/pages',
+    scanFile: 'main.{js,ts,jsx,tsx}',
+    defaultEntries: '',
     filename: 'index.html',
+    nested: false,
     ...userOptions,
   }
   let resolvedConfig: UserConfig
@@ -18,10 +23,11 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
     config(config) {
       resolvedConfig = config
       config.server = config.server || {}
-      config.server.open = options.open || '/index'
+      config.server.open = options.open
       config.build = config.build || {}
       config.build.rollupOptions = config.build.rollupOptions || {}
-      config.build.rollupOptions.input = getMPAIO(config.root || process.cwd(), options.filename)
+      config.build.rollupOptions.input = getMPAIO(config.root || process.cwd(), options)
+      console.log(config.build.rollupOptions.input, 'fuck')
     },
     configureServer({ middlewares: app }) {
       app.use(
@@ -31,13 +37,13 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
           verbose: Boolean(process.env.DEBUG) && process.env.DEBUG !== 'false',
           disableDotRule: undefined,
           htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
-          rewrites: getHistoryReWriteRuleList(options.filename),
+          rewrites: getHistoryReWriteRuleList(options),
         }),
       )
     },
     closeBundle() {
       const root = resolvedConfig.root || process.cwd()
-      const dest = resolvedConfig.build?.outDir || 'dist'
+      const dest = (resolvedConfig.build && resolvedConfig.build.outDir) || 'dist'
       const resolve = (p: string) => path.resolve(root, p)
 
       // 1. rename all xxx.html to index.html if needed

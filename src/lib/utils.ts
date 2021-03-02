@@ -1,7 +1,7 @@
 import fg from 'fast-glob'
 import yargs from 'yargs'
 import path from 'path'
-import { name } from '../../package.json'
+import type { MpaOptions } from './options'
 import type { Rewrite } from 'connect-history-api-fallback'
 
 const argv = yargs.argv
@@ -63,22 +63,23 @@ function parseFiles(files: string[], defaultEntries: string) {
 
 /**
  * @private
+ */
+function scanFile2Html(current: string, scanFile: string, filename: string) {
+  return current.replace(new RegExp(`${scanFile.replace(/.{(.*)}/, '')}.(.*)`), filename)
+}
+
+/**
+ * @private
  * @param scanDir - @default 'src/pages'
- * @param scanFile - @default 'main.{js,ts}'
- * @param log - log it
+ * @param scanFile - @default 'main.{js,ts,jsx,tsx}'
  * @param usePath
  * @param ext
  * @param nested - @default false
  */
-function getPagesInfo({
-  log = false,
-  defaultEntries = '',
-  scanDir = 'src/pages',
-  scanFile = 'main.{js,ts}',
-  usePath = true,
-  ext = '.html',
-  nested = false,
-} = {}): PageInfo {
+function getPagesInfo({ defaultEntries, scanDir, scanFile, nested }: MpaOptions): PageInfo {
+  // NOTE: need it ?
+  const usePath = true
+  const ext = '.html'
   const allFiles = fg.sync(
     nested
       ? `${scanDir}/**/${scanFile}`.replace('//', '/')
@@ -96,18 +97,15 @@ function getPagesInfo({
       filename: genFileName(pageName, outputPath, usePath, ext),
     }
   })
-  // Log
-  if (log) {
-    console.log(`[${name}] found pages: `, pages)
-  }
   return pages
 }
 
-export function getMPAIO(root: string, filename: string) {
-  const pages = getPagesInfo()
+export function getMPAIO(root: string, options: MpaOptions) {
+  const { scanFile, filename } = options
+  const pages = getPagesInfo(options)
   const input: Record<string, string> = {}
   Object.keys(pages).map(key => {
-    input[key] = path.resolve(root, pages[key].entry.replace(/main.(js|ts)/, filename))
+    input[key] = path.resolve(root, scanFile2Html(pages[key].entry, scanFile, filename))
   })
   return input
 }
@@ -115,15 +113,16 @@ export function getMPAIO(root: string, filename: string) {
 /**
  * history rewrite list
  */
-export function getHistoryReWriteRuleList(filename: string): Rewrite[] {
+export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
+  const { scanFile, filename } = options
   const list: Rewrite[] = []
   list.push({
     from: /^\/$/,
     to: `./src/pages/index/${filename}`,
   })
-  const pages = getPagesInfo()
+  const pages = getPagesInfo(options)
   Object.keys(pages).map(pageName => {
-    const to = `./${pages[pageName].entry.replace(/main.(js|ts)/, filename)}`
+    const to = `./${scanFile2Html(pages[pageName].entry, scanFile, filename)}`
     list.push({
       from: new RegExp(`^/${pageName}/index.html$`), // support pageName/index.html
       to,
