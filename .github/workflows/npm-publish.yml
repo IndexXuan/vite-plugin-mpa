@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: 12
       - run: yarn install
+      - run: yarn test
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}

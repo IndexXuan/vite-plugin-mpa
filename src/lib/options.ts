@@ -20,20 +20,15 @@ export interface MpaOptions {
    */
   scanFile: string
   /**
-   * default included entry
-   * @default ''
-   */
-  defaultEntries: string
-  /**
    * html template filename
    * @default 'index.html'
    */
   filename: string
   /**
-   * nested glob, not recommended
-   * @default false
+   * default included entry
+   * @default ''
    */
-  nested: boolean
+  defaultEntries: string
 }
 
 export type UserOptions = Partial<MpaOptions>

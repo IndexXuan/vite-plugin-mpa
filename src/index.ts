@@ -13,7 +13,6 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
     scanFile: 'main.{js,ts,jsx,tsx}',
     defaultEntries: '',
     filename: 'index.html',
-    nested: false,
     ...userOptions,
   }
   let resolvedConfig: UserConfig

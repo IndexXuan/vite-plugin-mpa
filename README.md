@@ -45,7 +45,32 @@ export default defineConfig({
 
 ## Options
 
-- [@see](https://github.com/IndexXuan/vite-plugin-mpa/blob/main/src/lib/options.ts)
+```ts
+{
+  /**
+   * open url path when server start, you can custom it
+   * @default path of first-page
+   */
+  open: string
+  /**
+   * where to locate pages
+   * @default 'src/pages', e.g. src/views
+   */
+  scanDir: string
+  /**
+   * where to locate pages, pass to fast-glob, e.g. index.{js,jsx}
+   * @default 'main.{js,ts,jsx,tsx}'
+   */
+  scanFile: string
+  /**
+   * what is your html file name, e.g. index.html / main.html / entry.html / template.html
+   * @default 'index.html'
+   */
+  filename: string
+}
+```
+
+- [see more](https://github.com/IndexXuan/vite-plugin-mpa/blob/main/src/lib/options.ts)
 
 ## Examples
 - see [src/examples](https://github.com/IndexXuan/vite-plugin-mpa/blob/main/examples)

@@ -12,6 +12,9 @@
     "commit": "git cz",
     "build": "tsup src/index.ts --dts",
     "lint": "prettier --write --parser typescript \"src/**/*.ts\"",
+    "test:vue3": "cd examples/vue3-mpa-app && npm i && yarn build",
+    "test:react": "cd examples/react-mpa-app && npm i && yarn build",
+    "test": "npm run test:vue3 & npm run test:react",
     "prepublishOnly": "npm run build"
   },
   "license": "MIT",

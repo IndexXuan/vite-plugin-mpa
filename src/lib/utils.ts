@@ -25,10 +25,9 @@ export function getFirstPage(pages: Record<string, string>): string {
 /**
  * @private
  */
-function genFileName(pageName: string, path: string, usePath: boolean, ext: string): string {
-  const xPath = usePath ? `${path === '' ? '' : `${path}/`}` : ''
-  const xExt = ext.includes('.') ? ext : ''
-  return `${xPath}${pageName}${xExt}`.replace(/^pages\//, '')
+function genFileName(pageName: string, path: string): string {
+  const xPath = path === '' ? '' : `${path}/`
+  return `${xPath}${pageName}.html`.replace(/^pages\//, '')
 }
 
 /**
@@ -82,17 +81,9 @@ function scanFile2Html(current: string, scanFile: string, filename: string) {
  * @param scanFile - @default 'main.{js,ts,jsx,tsx}'
  * @param usePath
  * @param ext
- * @param nested - @default false
  */
-function getPagesInfo({ defaultEntries, scanDir, scanFile, nested }: MpaOptions): PageInfo {
-  // NOTE: need it ?
-  const usePath = true
-  const ext = '.html'
-  const allFiles = fg.sync(
-    nested
-      ? `${scanDir}/**/${scanFile}`.replace('//', '/')
-      : `${scanDir}/*/${scanFile}`.replace('//', '/'),
-  )
+function getPagesInfo({ defaultEntries, scanDir, scanFile }: MpaOptions): PageInfo {
+  const allFiles = fg.sync(`${scanDir}/*/${scanFile}`.replace('//', '/'))
   // Calc
   const pages = {}
   const result = parseFiles(allFiles, defaultEntries)
@@ -102,7 +93,7 @@ function getPagesInfo({ defaultEntries, scanDir, scanFile, nested }: MpaOptions)
     // @ts-expect-error
     pages[pageName] = {
       entry: file,
-      filename: genFileName(pageName, outputPath, usePath, ext),
+      filename: genFileName(pageName, outputPath),
     }
   })
   return pages
