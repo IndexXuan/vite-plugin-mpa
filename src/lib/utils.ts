@@ -19,9 +19,7 @@ export type PageInfo = Record<
  */
 export function getFirstPage(pages: Record<string, string>): string {
   const firstPageName = Object.keys(pages)[0]
-  const fullPath = pages[firstPageName]
-  const parts = fullPath.split('/')
-  return `/${parts[parts.length - 1]}`
+  return `/${firstPageName}/index.html`
 }
 
 /**
