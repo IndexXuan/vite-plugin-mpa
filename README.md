@@ -3,6 +3,7 @@
 > out-of-box multi-page-application for vite, support Vue2/3, React and others
 
 <p align="center">
+  <img alt="wakatime" src="https://wakatime.com/badge/github/IndexXuan/vite-plugin-mpa.svg" />
   <a href="https://github.com/IndexXuan/vite-plugin-mpa/actions/workflows/npm-publish.yml">
    <img alt="NPM Publish" src="https://github.com/IndexXuan/vite-plugin-mpa/actions/workflows/npm-publish.yml/badge.svg" style="max-width:100%;">
   </a>
@@ -81,3 +82,7 @@ export default defineConfig({
 
 - fast-glob for src/pages/\*/main.{js,ts}, calc MPA entries
 - the result will be setted to vite#rollupOptions#input
+
+
+## Further
+- [vue-cli-plugin-vite](https://github.com/IndexXuan/vue-cli-plugin-vite)
