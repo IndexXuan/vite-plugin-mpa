@@ -86,3 +86,4 @@ export default defineConfig({
 
 ## Further
 - [vue-cli-plugin-vite](https://github.com/IndexXuan/vue-cli-plugin-vite)
+- [vite-plugin-html-template](https://github.com/IndexXuan/vite-plugin-html-template)
