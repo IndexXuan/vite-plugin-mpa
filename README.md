@@ -1,6 +1,6 @@
 # vite-plugin-mpa
 
-> out-of-box multi-page-application for vite, support Vue2/3, React and others
+> Out-of-the-box multi-page-application (MPA) support for Vite - supports Vue2/3, React and others
 
 <p align="center">
   <img alt="wakatime" src="https://wakatime.com/badge/github/IndexXuan/vite-plugin-mpa.svg" />
@@ -20,10 +20,10 @@
 
 ## Motivation
 
-- vite native support multi-page, but you must configure `rollupOptions.input`
-- when vite dev, you must open `localhost:3000/src/pages/index/xxx.html` for `$projectRoot/src/pages/index/xxx.html`
-- vue-cli help rewrite url for MPA, this plugin do the same thing and auto open first page for you
-- experiment: when build, organize the folder for you(like vue-cli), `dist/src/pages/subpage/index.html` will move to `dist/subpage/index.html`
+- Vite [natively supports multi-page apps](https://vitejs.dev/guide/build.html#multi-page-app), but you must configure `rollupOptions.input` manually
+- When running vite dev, you must open `localhost:3000/src/pages/index/xxx.html` for `$projectRoot/src/pages/index/xxx.html`
+- Similar to vue-cli, this plugin helps rewrite urls for MPA and auto open the first page for you
+- Experimental: when building, organize the folder for you (like vue-cli) - e.g `dist/src/pages/subpage/index.html` will move to `dist/subpage/index.html`
 
 ## Usage
 
@@ -49,7 +49,7 @@ export default defineConfig({
 ```ts
 {
   /**
-   * open url path when server start, you can custom it
+   * open url path when server starts (customizable)
    * @default path of first-page
    */
   open: string
@@ -59,7 +59,7 @@ export default defineConfig({
    */
   scanDir: string
   /**
-   * where to locate pages, pass to fast-glob, e.g. index.{js,jsx}
+   * how to locate page files (passed to fast-glob), e.g. index.{js,jsx}
    * @default 'main.{js,ts,jsx,tsx}'
    */
   scanFile: string
@@ -74,16 +74,17 @@ export default defineConfig({
 - [see more](https://github.com/IndexXuan/vite-plugin-mpa/blob/main/src/lib/options.ts)
 
 ## Examples
+
 - see [src/examples](https://github.com/IndexXuan/vite-plugin-mpa/blob/main/examples)
 
-- use shelljs after-build to organize dist folder, maybe have better approach (help wanted)
+- use shelljs after-build to organize dist folder (may be a better approach - help wanted)
 
-## Underlying
+## How It Works
 
-- fast-glob for src/pages/\*/main.{js,ts}, calc MPA entries
-- the result will be setted to vite#rollupOptions#input
+- Uses fast-glob to collect all pages, e.g. src/pages/\*/main.{js,ts}, and calc MPA entries
+- The result is passed into vite#rollupOptions#input
 
 
-## Further
+## Further Info
 - [vue-cli-plugin-vite](https://github.com/IndexXuan/vue-cli-plugin-vite)
 - [vite-plugin-html-template](https://github.com/IndexXuan/vite-plugin-html-template)
