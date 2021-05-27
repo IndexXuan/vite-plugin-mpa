@@ -15,6 +15,12 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
     filename: 'index.html',
     ...userOptions,
   }
+  if (!options.scanFile.includes('.')) {
+    console.error(
+      `[${name}]: scanFile should be something like main.ts/main.{js,ts}/index.js/index{ts,tsx}`,
+    )
+    process.exit(1)
+  }
   let resolvedConfig: UserConfig
   return {
     name,
