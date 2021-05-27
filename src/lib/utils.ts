@@ -72,7 +72,9 @@ function parseFiles(files: string[], defaultEntries: string) {
  * @private
  */
 function scanFile2Html(current: string, scanFile: string, filename: string) {
-  return current.replace(new RegExp(`${scanFile.replace(/.{(.*)}/, '')}.(.*)`), filename)
+  // support main.ts & main.{ts,js}
+  const entryRe = new RegExp(`${scanFile.split('.')[0]}.(.*)`)
+  return current.replace(entryRe, filename)
 }
 
 /**
