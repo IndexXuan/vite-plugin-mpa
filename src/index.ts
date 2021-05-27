@@ -52,16 +52,16 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
 
       // 1. rename all xxx.html to index.html if needed
       if (options.filename !== 'index.html') {
-        shell.ls(resolve(`${dest}/src/pages/*/*.html`)).forEach(html => {
+        shell.ls(resolve(`${dest}/${options.scanDir}/*/*.html`)).forEach(html => {
           shell.mv(html, html.replace(options.filename, 'index.html'))
         })
       }
-      // 2. move src/pages/* to dest root
-      shell.mv(resolve(`${dest}/src/pages/*`), resolve(dest))
-      // 3. remove empty src dir
+      // 2. remove all *.html at dest root
+      shell.rm('-rf', resolve(`${dest}/*.html`))
+      // 3. move src/pages/* to dest root
+      shell.mv(resolve(`${dest}/${options.scanDir}/*`), resolve(dest))
+      // 4. remove empty src dir
       shell.rm('-rf', resolve(`${dest}/src`))
-      // 4. remove index.html copyed from public folder
-      shell.rm('-rf', resolve(`${dest}/index.html`))
     },
   }
 }

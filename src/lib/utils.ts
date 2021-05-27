@@ -73,7 +73,8 @@ function parseFiles(files: string[], defaultEntries: string) {
  */
 function scanFile2Html(current: string, scanFile: string, filename: string) {
   // support main.ts & main.{ts,js}
-  const entryRe = new RegExp(`${scanFile.split('.')[0]}.(.*)`)
+  const reStr = `${scanFile.split('.')[0]}[.](.*)`
+  const entryRe = new RegExp(reStr)
   return current.replace(entryRe, filename)
 }
 
@@ -115,11 +116,11 @@ export function getMPAIO(root: string, options: MpaOptions) {
  * history rewrite list
  */
 export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
-  const { scanFile, filename } = options
+  const { scanDir, scanFile, filename } = options
   const list: Rewrite[] = []
   list.push({
     from: /^\/$/,
-    to: `./src/pages/index/${filename}`,
+    to: `./${scanDir}/index/${filename}`,
   })
   const pages = getPagesInfo(options)
   Object.keys(pages).map(pageName => {
