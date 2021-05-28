@@ -20,7 +20,7 @@ export interface MpaOptions {
    */
   scanFile: string
   /**
-   * html template filename
+   * html filename, yarn crate @vitejs/app => projectRoot/index.html or MPA projectRoot/pages/${pageName}/index.html
    * @default 'index.html'
    */
   filename: string
