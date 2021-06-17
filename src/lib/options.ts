@@ -8,7 +8,7 @@ export interface MpaOptions {
    * this plugin will try to open first page for you, but you can still custom, e.g. /index#/about
    * @default firstPagePath
    */
-  open: string
+  open: string | boolean
   /**
    * where to scan
    * @default 'src/pages'

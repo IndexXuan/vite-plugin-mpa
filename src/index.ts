@@ -31,7 +31,9 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
       config.build.rollupOptions = config.build.rollupOptions || {}
       config.build.rollupOptions.input = getMPAIO(config.root || process.cwd(), options)
       config.server = config.server || {}
-      config.server.open = options.open || getFirstPage(config.build.rollupOptions.input)
+      // default '' means first-page and you can customized or disabled.
+      config.server.open =
+        options.open === '' ? getFirstPage(config.build.rollupOptions.input) : options.open
     },
     configureServer({ middlewares: app }) {
       app.use(
