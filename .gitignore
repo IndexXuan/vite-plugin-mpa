@@ -19,3 +19,4 @@ yarn.lock
 *.njsproj
 *.sln
 *.sw*
+build

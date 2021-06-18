@@ -15,7 +15,8 @@
     "test:vue3": "cd examples/vue3-mpa-app && npm i && yarn build",
     "test:react": "cd examples/react-mpa-app && npm i && yarn build",
     "test": "npm run test:vue3 & npm run test:react",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "build:es": "rollup -c"
   },
   "license": "MIT",
   "homepage": "https://github.com/IndexXuan/vite-plugin-mpa",
@@ -31,24 +32,31 @@
   ],
   "dependencies": {
     "connect-history-api-fallback": "1.6.0",
+    "rollup": "^2.52.1",
     "shelljs": "0.8.4",
     "yargs": "16.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "7.2.0",
+    "@commitlint/config-conventional": "7.1.2",
     "@types/connect-history-api-fallback": "1.3.3",
     "@types/node": "14.14.25",
     "@types/shelljs": "0.8.8",
     "@types/yargs": "16.0.0",
+    "commitizen": "2.10.1",
+    "cz-customizable": "5.2.0",
     "lint-staged": "10.5.4",
     "prettier": "2.2.1",
     "tsup": "3.12.1",
     "typescript": "4.1.3",
     "vite": "2.0.1",
-    "@commitlint/cli": "7.2.0",
-    "@commitlint/config-conventional": "7.1.2",
-    "commitizen": "2.10.1",
-    "cz-customizable": "5.2.0",
-    "yorkie": "2.0.0"
+    "yorkie": "2.0.0",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-replace": "^2.4.2",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "tslib": "^2.2.0"
   },
   "prettier": {
     "printWidth": 100,

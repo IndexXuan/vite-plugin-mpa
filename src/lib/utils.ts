@@ -130,6 +130,10 @@ export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
       to,
     })
     list.push({
+      from: new RegExp(`^/${pageName}/[a-z0-9]+/$`), // support detailPageName/id/
+      to,
+    })
+    list.push({
       from: new RegExp(`^/${pageName}/index.html$`), // support detailPageName/index.html
       to,
     })
