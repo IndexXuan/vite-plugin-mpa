@@ -126,6 +126,10 @@ export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
   Object.keys(pages).map(pageName => {
     const to = `./${scanFile2Html(pages[pageName].entry, scanFile, filename)}`
     list.push({
+      from: new RegExp(`^/${pageName}/index.html/*`), // handle html5 history mode fallback
+      to,
+    })
+    list.push({
       from: new RegExp(`^/${pageName}/index.html$`), // support pageName/index.html
       to,
     })
