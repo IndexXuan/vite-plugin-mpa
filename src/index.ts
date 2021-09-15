@@ -54,7 +54,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
 
       // 1. rename all xxx.html to index.html if needed
       if (options.filename !== 'index.html') {
-        shell.ls(resolve(`${dest}/${options.scanDir}/*/*.html`)).forEach(html => {
+        shell.ls(resolve(`${dest}/${options.scanDir}/**/*.html`)).forEach(html => {
           shell.mv(html, html.replace(options.filename, 'index.html'))
         })
       }

@@ -35,7 +35,8 @@ function genFileName(pageName: string, path: string): string {
  */
 function parseEntryFile(file: string, filters: string[] = []) {
   const fileSplit = file.split('/')
-  const pageName = fileSplit[fileSplit.length - 2]
+  // const pageName = fileSplit[fileSplit.length - 2]
+  const pageName = fileSplit.slice(2, -1).join('/')
   const outputPath = fileSplit.slice(1, fileSplit.length - 2).join('/')
   const result = {
     file,
@@ -86,7 +87,7 @@ function scanFile2Html(current: string, scanFile: string, filename: string) {
  * @param ext
  */
 function getPagesInfo({ defaultEntries, scanDir, scanFile }: MpaOptions): PageInfo {
-  const allFiles = fg.sync(`${scanDir}/*/${scanFile}`.replace('//', '/'))
+  const allFiles = fg.sync(`${scanDir}/**/${scanFile}`.replace('//', '/'))
   // Calc
   const pages = {}
   const result = parseFiles(allFiles, defaultEntries)
