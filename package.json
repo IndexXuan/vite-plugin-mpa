@@ -2,6 +2,7 @@
   "name": "vite-plugin-mpa",
   "version": "1.1.0",
   "description": "MPA for vite",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -10,7 +11,7 @@
   "author": "indexxuan@gmail.com",
   "scripts": {
     "commit": "git cz",
-    "build": "tsup src/index.ts --dts",
+    "build": "tsup src/index.ts --format esm,cjs --dts",
     "lint": "prettier --write --parser typescript \"src/**/*.ts\"",
     "test:vue3": "cd examples/vue3-mpa-app && npm i && yarn build",
     "test:react": "cd examples/react-mpa-app && npm i && yarn build",
