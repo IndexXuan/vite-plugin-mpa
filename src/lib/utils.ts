@@ -142,6 +142,10 @@ export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
       from: new RegExp(`^\/${pageName}$`), // support pageName, not recommended
       to,
     })
+    list.push({
+      from: new RegExp(`^/${pageName}/*`), // support pageName/{pages}
+      to
+    })
   })
   return list
 }
