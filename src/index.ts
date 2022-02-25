@@ -13,6 +13,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
     scanFile: 'main.{js,ts,jsx,tsx}',
     defaultEntries: '',
     filename: 'index.html',
+    indexPage: '',
     ...userOptions,
   }
   if (!options.scanFile.includes('.')) {
@@ -64,6 +65,11 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
       shell.mv(resolve(`${dest}/${options.scanDir}/*`), resolve(dest))
       // 4. remove empty src dir
       shell.rm('-rf', resolve(`${dest}/src`))
+      // 5. move the indexPage to dest root
+      if (options.indexPage) {
+        shell.mv(resolve(`${dest}/${options.indexPage}/index.html`), `${dest}/index.html`)
+        shell.rm('-rf', resolve(`${dest}/${options.indexPage}`))
+      }
     },
   }
 }

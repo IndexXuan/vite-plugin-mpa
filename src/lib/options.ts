@@ -29,6 +29,11 @@ export interface MpaOptions {
    * @default ''
    */
   defaultEntries: string
+  /**
+   * the page will move to the root of the outDir
+   * @default false
+   */
+  indexPage: string | boolean
 }
 
 export type UserOptions = Partial<MpaOptions>
