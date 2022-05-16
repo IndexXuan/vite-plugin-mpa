@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-mpa",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "MPA for vite",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
