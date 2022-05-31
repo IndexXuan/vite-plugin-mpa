@@ -13,6 +13,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
     scanFile: 'main.{js,ts,jsx,tsx}',
     defaultEntries: '',
     filename: 'index.html',
+    rewrites: [],
     ...userOptions,
   }
   if (!options.scanFile.includes('.')) {
