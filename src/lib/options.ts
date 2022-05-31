@@ -2,6 +2,8 @@
  * MPA Plugin options.
  */
 
+import type { Rewrite } from 'connect-history-api-fallback'
+
 export interface MpaOptions {
   /**
    * open path for viteDevServer
@@ -33,10 +35,7 @@ export interface MpaOptions {
    * rewrite rule list
    * @default []
    */
-  rewrites: {
-    from: RexExp | string,
-    to: string
-  }[]
+  rewrites: Rewrite[]
 }
 
 export type UserOptions = Partial<MpaOptions>
