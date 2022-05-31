@@ -29,6 +29,14 @@ export interface MpaOptions {
    * @default ''
    */
   defaultEntries: string
+  /**
+   * rewrite rule list
+   * @default []
+   */
+  rewrites: {
+    from: RexExp | string,
+    to: string
+  }[]
 }
 
 export type UserOptions = Partial<MpaOptions>
