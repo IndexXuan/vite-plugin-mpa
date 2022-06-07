@@ -117,8 +117,8 @@ export function getMPAIO(root: string, options: MpaOptions) {
  * history rewrite list
  */
 export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
-  const { scanDir, scanFile, filename } = options
-  const list: Rewrite[] = []
+  const { scanDir, scanFile, filename, rewrites } = options
+  const list: Rewrite[] = rewrites
   list.push({
     from: /^\/$/,
     to: `./${scanDir}/index/${filename}`,
