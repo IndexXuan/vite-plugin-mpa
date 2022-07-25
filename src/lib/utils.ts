@@ -143,7 +143,7 @@ export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
       to,
     })
     list.push({
-      from: new RegExp(`^/${pageName}/*`), // support pageName/{pages}
+      from: new RegExp(`^/${pageName}/`), // support pageName/{pages}
       to,
     })
   })
