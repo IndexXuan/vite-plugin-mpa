@@ -36,6 +36,11 @@ export interface MpaOptions {
    * @default []
    */
   rewrites: Rewrite[]
+   /**
+   * what is your del index.html, e.g. /subpage/index.html => subpage.html
+   * @default 'false'
+   */
+  delIndex: boolean
 }
 
 export type UserOptions = Partial<MpaOptions>
