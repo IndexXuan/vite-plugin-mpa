@@ -63,10 +63,13 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
       // 2. remove all *.html at dest root
       shell.rm('-rf', resolve(`${dest}/*.html`))
       // 3. move src/pages/* to dest root
-      // shell.mv(resolve(`${dest}/${options.scanDir}/*`), resolve(dest))
-      Object.keys(pageInput).forEach(key=>{
-        shell.mv(resolve(`${dest}/${options.scanDir}/${key}/index.html`), resolve(`${dest}/${key}.html`))
-      })
+      if (options.delIndex) {
+         Object.keys(pageInput).forEach(key=>{
+            shell.mv(resolve(`${dest}/${options.scanDir}/${key}/index.html`), resolve(`${dest}/${key}.html`))
+          })
+      } else {
+        shell.mv(resolve(`${dest}/${options.scanDir}/*`), resolve(dest))
+      }
       // 4. remove empty src dir
       shell.rm('-rf', resolve(`${dest}/src`))
     },
