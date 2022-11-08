@@ -3,7 +3,7 @@
 > Out-of-the-box multi-page-application (MPA) support for Vite - supports Vue2/3, React and others
 
 <p align="center">
-  <img alt="wakatime" src="https://wakatime.com/badge/github/IndexXuan/vite-plugin-mpa.svg" />
+  <img alt="wakatime" src="https://camo.githubusercontent.com/5eff118fdedd801200507a1dc3996c385b6688da4e4c9b4e4e95dde67f88b63e/68747470733a2f2f77616b6174696d652e636f6d2f62616467652f6769746875622f496e6465785875616e2f766974652d706c7567696e2d6d70612e737667" />
   <a href="https://github.com/lzq035/vite-plugin-mpa-next/actions/workflows/npm-publish.yml">
    <img alt="NPM Publish" src="https://github.com/lzq035/vite-plugin-mpa-next/actions/workflows/npm-publish.yml/badge.svg" style="max-width:100%;">
   </a>
