@@ -1,4 +1,4 @@
-# vite-plugin-mpa
+# vite-plugin-mpa-next
 
 > Out-of-the-box multi-page-application (MPA) support for Vite - supports Vue2/3, React and others
 
@@ -28,7 +28,7 @@
 ## Usage
 
 ```sh
-yarn add vite-plugin-mpa
+yarn add vite-plugin-mpa-next
 ```
 
 ```ts
