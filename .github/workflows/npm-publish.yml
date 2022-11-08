@@ -4,14 +4,14 @@ on:
   push:
     # Sequence of patterns matched against refs/heads
     branches:
-      # Push events on master branch
-      - master
+      # Push events on release branch
+      - release
 
   pull_request:
     # Sequence of patterns matched against refs/heads
     branches:
-      # Push events on master branch
-      - master
+      # Push events on release branch
+      - release
 
 jobs:
   publish:
