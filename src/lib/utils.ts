@@ -21,6 +21,16 @@ export function getFirstPage(pages: Record<string, string>): string {
   const firstPageName = Object.keys(pages)[0]
   return `/${firstPageName}/index.html`
 }
+/**
+ * return open path
+ */
+export function getOpen(config: any, options: MpaOptions): string | boolean {
+  return options.open === ''
+    ? config.server.open
+      ? `/${options.open}`
+      : getFirstPage(config.build.rollupOptions.input)
+    : options.open
+}
 
 /**
  * @private
