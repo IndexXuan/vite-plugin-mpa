@@ -1,6 +1,6 @@
 {
-  "name": "vite-plugin-mpa",
-  "version": "1.1.4",
+  "name": "vite-plugin-mpa-next",
+  "version": "1.0.0",
   "description": "MPA for vite",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
   "files": [
     "dist"
   ],
-  "author": "indexxuan@gmail.com",
+  "author": "lzq0email@gmail.com",
   "scripts": {
     "commit": "git cz",
     "build": "tsup src/index.ts --format esm,cjs --dts",
@@ -19,10 +19,10 @@
     "prepublishOnly": "npm run build"
   },
   "license": "MIT",
-  "homepage": "https://github.com/IndexXuan/vite-plugin-mpa",
+  "homepage": "https://github.com/lzq035/vite-plugin-mpa-next",
   "repository": {
     "type": "git",
-    "url": "git@github.com:IndexXuan/vite-plugin-mpa.git"
+    "url": "git@github.com:lzq035/vite-plugin-mpa-next.git"
   },
   "keywords": [
     "vite-plugin",
