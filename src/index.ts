@@ -65,7 +65,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
       // 3. move src/pages/* to dest root
       // shell.mv(resolve(`${dest}/${options.scanDir}/*`), resolve(dest))
       Object.keys(pageInput).forEach(key=>{
-        _shelljs2.default.mv(resolve(`${dest}/${options.scanDir}/${key}/index.html`), resolve(`${dest}/${key}.html`))
+        shell.mv(resolve(`${dest}/${options.scanDir}/${key}/index.html`), resolve(`${dest}/${key}.html`))
       })
       // 4. remove empty src dir
       shell.rm('-rf', resolve(`${dest}/src`))
