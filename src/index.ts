@@ -51,6 +51,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
       const root = resolvedConfig.root || process.cwd()
       const dest = (resolvedConfig.build && resolvedConfig.build.outDir) || 'dist'
       const resolve = (p: string) => path.resolve(root, p)
+      const pageInput = resolvedConfig.build.rollupOptions.input
 
       // 1. rename all xxx.html to index.html if needed
       if (options.filename !== 'index.html') {
@@ -58,10 +59,14 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
           shell.mv(html, html.replace(options.filename, 'index.html'))
         })
       }
+      
       // 2. remove all *.html at dest root
       shell.rm('-rf', resolve(`${dest}/*.html`))
       // 3. move src/pages/* to dest root
-      shell.mv(resolve(`${dest}/${options.scanDir}/*`), resolve(dest))
+      // shell.mv(resolve(`${dest}/${options.scanDir}/*`), resolve(dest))
+      Object.keys(pageInput).forEach(key=>{
+        _shelljs2.default.mv(resolve(`${dest}/${options.scanDir}/${key}/index.html`), resolve(`${dest}/${key}.html`))
+      })
       // 4. remove empty src dir
       shell.rm('-rf', resolve(`${dest}/src`))
     },
