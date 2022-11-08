@@ -8,10 +8,10 @@
    <img alt="NPM Publish" src="https://github.com/lzq035/vite-plugin-mpa-next/actions/workflows/npm-publish.yml/badge.svg" style="max-width:100%;">
   </a>
   <a href="https://www.npmjs.com/package/vite-plugin-mpa-next" rel="nofollow">
-    <img alt="downloads" src="https://img.shields.io/npm/dt/vite-plugin-mpa.svg">
+    <img alt="downloads" src="https://img.shields.io/npm/dt/vite-plugin-mpa-next.svg">
   </a>
   <a href="https://www.npmjs.com/package/vite-plugin-mpa-next" rel="nofollow">
-    <img alt="npm version" src="https://img.shields.io/npm/v/vite-plugin-mpa.svg" style="max-width:100%;">
+    <img alt="npm version" src="https://img.shields.io/npm/v/vite-plugin-mpa-next.svg" style="max-width:100%;">
   </a>
   <a href="https://github.com/lzq035/vite-plugin-mpa-next/blob/main/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" style="max-width:100%;">
