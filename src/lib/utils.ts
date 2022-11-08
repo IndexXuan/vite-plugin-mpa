@@ -27,7 +27,7 @@ export function getFirstPage(pages: Record<string, string>): string {
 export function getOpen(config: any, options: MpaOptions): string | boolean {
   return options.open === ''
     ? config.server.open
-      ? `/${options.open}`
+      ? `/${config.server.open}`
       : getFirstPage(config.build.rollupOptions.input)
     : options.open
 }
