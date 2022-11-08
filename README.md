@@ -69,7 +69,7 @@ export default defineConfig({
   filename: string
    /**
    * what is your del index.html, e.g. /subpage/index.html => subpage.html
-   * @default 'index.html'
+   * @default false
    */
   delIndex: boolean
 }
