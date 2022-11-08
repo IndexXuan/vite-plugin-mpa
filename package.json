@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-mpa-next",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "MPA for vite",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
