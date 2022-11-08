@@ -33,7 +33,7 @@ yarn add vite-plugin-mpa-next
 
 ```ts
 // vite.config.ts
-import mpa from 'vite-plugin-mpa'
+import mpa from 'vite-plugin-mpa-next'
 
 // @see https://vitejs.dev/config/
 export default defineConfig({
