@@ -51,7 +51,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
       const root = resolvedConfig.root || process.cwd()
       const dest = (resolvedConfig.build && resolvedConfig.build.outDir) || 'dist'
       const resolve = (p: string) => path.resolve(root, p)
-      const pageInput = resolvedConfig.build.rollupOptions.input
+      const pageInput = (resolvedConfig.build && resolvedConfig.build.rollupOptions) && resolvedConfig.build.rollupOptions.input || {}
 
       // 1. rename all xxx.html to index.html if needed
       if (options.filename !== 'index.html') {
