@@ -22,7 +22,7 @@
 - Vite [natively supports multi-page apps](https://vitejs.dev/guide/build.html#multi-page-app), but you must configure `rollupOptions.input` manually
 - When running vite dev, you must open `localhost:3000/src/pages/index/xxx.html` for `$projectRoot/src/pages/index/xxx.html`
 - Similar to vue-cli, this plugin helps rewrite urls for MPA and auto open the first page for you
-- Experimental: when building, organize the folder for you (like vue-cli) - e.g `dist/src/pages/subpage/index.html` will move to `dist/subpage/index.html`
+- Experimental: when building, organize the folder for you (like vue-cli) - e.g `dist/src/pages/subpage/index.html` will move to `dist/subpage.html`
 
 ## Usage
 
