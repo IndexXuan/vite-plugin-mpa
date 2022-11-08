@@ -34,7 +34,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
       config.server = config.server || {}
       // default '' means first-page and you can customized or disabled.
       config.server.open =
-        options.open === '' ? getFirstPage(config.build.rollupOptions.input) : options.open
+        options.open === '' ? (config.server.open?config.server.open: getFirstPage(config.build.rollupOptions.input)) : options.open
     },
     configureServer({ middlewares: app }) {
       app.use(

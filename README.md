@@ -3,9 +3,8 @@
 > Out-of-the-box multi-page-application (MPA) support for Vite - supports Vue2/3, React and others
 
 <p align="center">
-  <img alt="wakatime" src="https://wakatime.com/badge/github/IndexXuan/vite-plugin-mpa.svg" />
-  <a href="https://github.com/IndexXuan/vite-plugin-mpa/actions/workflows/npm-publish.yml">
-   <img alt="NPM Publish" src="https://github.com/IndexXuan/vite-plugin-mpa/actions/workflows/npm-publish.yml/badge.svg" style="max-width:100%;">
+  <a href="https://github.com/lzq035/vite-plugin-mpa-next/actions/workflows/npm-publish.yml">
+   <img alt="NPM Publish" src="https://github.com/lzq035/vite-plugin-mpa-next/actions/workflows/npm-publish.yml/badge.svg" style="max-width:100%;">
   </a>
   <a href="https://www.npmjs.com/package/vite-plugin-mpa" rel="nofollow">
     <img alt="downloads" src="https://img.shields.io/npm/dt/vite-plugin-mpa.svg">
@@ -13,7 +12,7 @@
   <a href="https://www.npmjs.com/package/vite-plugin-mpa" rel="nofollow">
     <img alt="npm version" src="https://img.shields.io/npm/v/vite-plugin-mpa.svg" style="max-width:100%;">
   </a>
-  <a href="https://github.com/IndexXuan/vite-plugin-mpa/blob/main/LICENSE">
+  <a href="https://github.com/lzq035/vite-plugin-mpa-next/blob/main/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" style="max-width:100%;">
   </a>
 </p>
@@ -71,11 +70,11 @@ export default defineConfig({
 }
 ```
 
-- [see more](https://github.com/IndexXuan/vite-plugin-mpa/blob/main/src/lib/options.ts)
+- [see more](https://github.com/lzq035/vite-plugin-mpa-next/blob/main/src/lib/options.ts)
 
 ## Examples
 
-- see [src/examples](https://github.com/IndexXuan/vite-plugin-mpa/blob/main/examples)
+- see [src/examples](https://github.com/lzq035/vite-plugin-mpa-next/blob/main/examples)
 
 - use shelljs after-build to organize dist folder (may be a better approach - help wanted)
 
@@ -84,7 +83,3 @@ export default defineConfig({
 - Uses fast-glob to collect all pages, e.g. src/pages/\*/main.{js,ts}, and calc MPA entries
 - The result is passed into vite#rollupOptions#input
 
-
-## Further Info
-- [vue-cli-plugin-vite](https://github.com/IndexXuan/vue-cli-plugin-vite)
-- [vite-plugin-html-template](https://github.com/IndexXuan/vite-plugin-html-template)
