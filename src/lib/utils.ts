@@ -124,28 +124,30 @@ export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
     to: `./${scanDir}/index/${filename}`,
   })
   const pages = getPagesInfo(options)
-  Object.keys(pages).map(pageName => {
-    const to = `./${scanFile2Html(pages[pageName].entry, scanFile, filename)}`
-    list.push({
-      from: new RegExp(`^/${pageName}/index.html/*`), // handle html5 history mode fallback
-      to,
+  Object.keys(pages)
+    .reverse()
+    .map(pageName => {
+      const to = `./${scanFile2Html(pages[pageName].entry, scanFile, filename)}`
+      list.push({
+        from: new RegExp(`^/${pageName}/index.html/*`), // handle html5 history mode fallback
+        to,
+      })
+      list.push({
+        from: new RegExp(`^/${pageName}/index.html$`), // support pageName/index.html
+        to,
+      })
+      list.push({
+        from: new RegExp(`^\/${pageName}.html$`), // support pageName.html, not recommended
+        to,
+      })
+      list.push({
+        from: new RegExp(`^\/${pageName}$`), // support pageName, not recommended
+        to,
+      })
+      list.push({
+        from: new RegExp(`^/${pageName}/`), // support pageName/{pages}
+        to,
+      })
     })
-    list.push({
-      from: new RegExp(`^/${pageName}/index.html$`), // support pageName/index.html
-      to,
-    })
-    list.push({
-      from: new RegExp(`^\/${pageName}.html$`), // support pageName.html, not recommended
-      to,
-    })
-    list.push({
-      from: new RegExp(`^\/${pageName}$`), // support pageName, not recommended
-      to,
-    })
-    list.push({
-      from: new RegExp(`^/${pageName}/`), // support pageName/{pages}
-      to,
-    })
-  })
   return list
 }
