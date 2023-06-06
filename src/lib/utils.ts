@@ -124,7 +124,21 @@ export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
     to: `./${scanDir}/index/${filename}`,
   })
   const pages = getPagesInfo(options)
-  Object.keys(pages).map(pageName => {
+  const pageKeys = Object.keys(pages)
+  // the order of connect-history-api-fallback.rewrites matters!
+  // if b starts with a, then a should be placed after b
+  // eg: /page should be placed after /page/sub, so that /page/sub won't be interecept by new RegExp(`^/${page}/`) definded by /page
+  pageKeys.sort((a, b) => {
+    if (a.startsWith(b)) {
+      return -1
+    } else if (b.startsWith(a)) {
+      return 1
+    } else {
+      return b.length - a.length || a.localeCompare(b)
+    }
+  })
+
+  pageKeys.map(pageName => {
     const to = `./${scanFile2Html(pages[pageName].entry, scanFile, filename)}`
     list.push({
       from: new RegExp(`^/${pageName}/index.html/*`), // handle html5 history mode fallback
