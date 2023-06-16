@@ -29,6 +29,8 @@
 
 ```sh
 yarn add vite-plugin-mpa
+# or
+pnpm add vite-plugin-mpa
 ```
 
 ```ts

@@ -13,10 +13,12 @@
     "commit": "git cz",
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "lint": "prettier --write --parser typescript \"src/**/*.ts\"",
-    "test:vue3": "cd examples/vue3-mpa-app && npm i && yarn build",
-    "test:react": "cd examples/react-mpa-app && npm i && yarn build",
-    "test": "npm run test:vue3 & npm run test:react",
-    "prepublishOnly": "npm run build"
+    "test:vue3": "cd examples/vue3-mpa-app && pnpm build",
+    "test:react": "cd examples/react-mpa-app && pnpm build",
+    "test:svelte": "cd examples/svelte-mpa-app && pnpm build",
+    "test": "pnpm run test:vue3 & pnpm run test:react && pnpm run test:svelte",
+    "prepublishOnly": "pnpm run build",
+    "preinstall": "only-allow pnpm"
   },
   "license": "MIT",
   "homepage": "https://github.com/IndexXuan/vite-plugin-mpa",
@@ -36,19 +38,20 @@
     "yargs": "16.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "7.2.0",
+    "@commitlint/config-conventional": "7.1.2",
     "@types/connect-history-api-fallback": "1.3.3",
     "@types/node": "14.14.25",
     "@types/shelljs": "0.8.8",
     "@types/yargs": "16.0.0",
+    "commitizen": "2.10.1",
+    "cz-customizable": "5.2.0",
     "lint-staged": "10.5.4",
+    "only-allow": "^1.1.1",
     "prettier": "2.2.1",
     "tsup": "3.12.1",
     "typescript": "4.1.3",
     "vite": "2.0.1",
-    "@commitlint/cli": "7.2.0",
-    "@commitlint/config-conventional": "7.1.2",
-    "commitizen": "2.10.1",
-    "cz-customizable": "5.2.0",
     "yorkie": "2.0.0"
   },
   "prettier": {
