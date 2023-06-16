@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import path from 'path'
-import svelte from '@sveltejs/vite-plugin-svelte'
+import { svelte } from '@sveltejs/vite-plugin-svelte'
 import mpa from '../../src/index'
 
 // https://vitejs.dev/config/

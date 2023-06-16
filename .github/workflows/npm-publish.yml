@@ -21,8 +21,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn install
-      - run: yarn test
+      - run: npm install pnpm -g && pnpm install
+      - run: pnpm test
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
